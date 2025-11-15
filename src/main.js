@@ -6,8 +6,7 @@ import authRouter from "./routes/auth.router.js";
 import workspaceRouter from "./routes/workspace.router.js";
 import randomMiddleware from "./middlewares/random.middleware.js";
 import mailTransporter from "./config/mailTransporter.config.js";
-import cors from 'cors'
-
+import cors from "cors"
 
 connectToMongoDB()
 
