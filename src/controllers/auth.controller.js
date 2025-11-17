@@ -9,7 +9,7 @@ class AuthController {
             const { email, password, name } = request.body
             
             await AuthService.register(email, password, name)
-            response.send({
+            response.status(201).json({
                 ok: true,
                 message: 'Usuario registrado con exito',
                 status: 201
@@ -17,7 +17,7 @@ class AuthController {
         }
         catch(error){
             if(error.status){
-                response.send({
+                response.status(error.status).json({
                     ok:false,
                     message: error.message,
                     status: error.status
@@ -27,7 +27,7 @@ class AuthController {
                 console.error(
                     'ERROR AL REGISTRAR', error
                 )
-                response.send({
+                response.status(500).json({
                     ok: false,
                     message: 'Error interno del servidor',
                     status: 500
@@ -71,7 +71,7 @@ class AuthController {
 
             const { auth_token } = await AuthService.login(email, password)
 
-            response.json(
+            response.status(200).json(
                 {
                     ok: true, 
                     message: 'Usuario logueado con exito',
@@ -85,7 +85,7 @@ class AuthController {
         }
         catch(error){
             if(error.status){
-                return response.send({
+                return response.status(error.status).json({
                     ok:false,
                     message: error.message,
                     status: error.status
@@ -95,7 +95,7 @@ class AuthController {
                 console.error(
                     'ERROR AL REGISTRAR', error
                 )
-                return response.send({
+                return response.status(500).json({
                     ok: false,
                     message: 'Error interno del servidor',
                     status: 500
