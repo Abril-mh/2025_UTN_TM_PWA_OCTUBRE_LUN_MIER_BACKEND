@@ -38,7 +38,7 @@ class AuthService {
             subject: 'Verifica tu cuenta de mail',
             html: `
                 <h1>Verifica tu cuenta de mail</h1>
-                <a href='${ENVIRONMENT.URL_BACKEND}/api/auth/verify-email/${verification_token}'>Verificar</a>
+                <a href="${ENVIRONMENT.URL_BACKEND}/api/auth/verify-email/${verification_token}">Verificar</a>
             `
         })
 
@@ -108,7 +108,7 @@ class AuthService {
             {
                 name: user_found.name,
                 email: user_found.email,
-                id: user_found.id,
+                id: user_found._id,
             },
             ENVIRONMENT.JWT_SECRET,
             {
